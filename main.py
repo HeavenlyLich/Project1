@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import messagebox
 
 
+
+
 class TicTacToeBase:
     """Базовий клас з логікою, яку ми будемо перевизначати"""
 
@@ -12,7 +14,7 @@ class TicTacToeBase:
         self.board = [" " for _ in range(9)]
         self.buttons = []
 
-
+    #Додаткова зміна
 class TicTacToeBuggy(TicTacToeBase):
     def __init__(self):
         super().__init__("Хрестики-нулики (BUGGY)")
