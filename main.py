@@ -41,7 +41,8 @@ class TicTacToeBuggy(TicTacToeBase):
                 messagebox.showinfo("Перемога", f"Виграв {self.current_player}")
                 self.window.destroy()
             elif " " not in self.board:
-                messagebox.showwarning("Нічия", "Поле не очиститься!")  # BUG: Немає скидання
+                messagebox.showinfo("Нічия", "Гра завершена нічиєю!")
+                self.window.destroy() # Додаємо скидання
             else:
                 self.current_player = "O" if self.current_player == "X" else "X"
 
