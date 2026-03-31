@@ -20,7 +20,7 @@ class TicTacToeBuggy(TicTacToeBase):
         super().__init__("Хрестики-нулики (BUGGY)")
         self.label_text = tk.StringVar(value="Зараз ходить: X")
         self.create_widgets()
-        self.window.geometry("150x150")  # BUG: Мале вікно
+        # BUG: Мале вікно \\ Виправлено
 
     def create_widgets(self):
         # Fix: Додали Label з індикацією ходу
