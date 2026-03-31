@@ -34,7 +34,7 @@ class TicTacToeBuggy(TicTacToeBase):
             self.buttons.append(btn)
 
     def make_move(self, i):
-        if True:  # BUG: Дозволяє перезапис
+        if self.board[i] == " ":  # BUG: Дозволяє перезапис \\ Виправлено
             self.board[i] = self.current_player
             self.buttons[i].config(text=self.current_player)
             if self.check_winner():
