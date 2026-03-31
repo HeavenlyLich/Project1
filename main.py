@@ -18,11 +18,13 @@ class TicTacToeBase:
 class TicTacToeBuggy(TicTacToeBase):
     def __init__(self):
         super().__init__("Хрестики-нулики (BUGGY)")
+        self.label_text = tk.StringVar(value="Зараз ходить: X")
         self.create_widgets()
         self.window.geometry("150x150")  # BUG: Мале вікно
 
     def create_widgets(self):
-        # BUG: Немає Label з індикацією ходу
+        # Fix: Додали Label з індикацією ходу
+        tk.Label(self.window, textvariable=self.label_text, font=('Arial', 12)).grid(row=3, column=0, columnspan=3)
         for i in range(9):
             if i == 4:  # BUG: Крива червона кнопка
                 btn = tk.Button(self.window, text=" ", font=('Arial', 10), width=2, height=1,
@@ -45,6 +47,8 @@ class TicTacToeBuggy(TicTacToeBase):
                 self.window.destroy() # Додаємо скидання
             else:
                 self.current_player = "O" if self.current_player == "X" else "X"
+                self.label_text.set(f"Зараз ходить: {self.current_player}")
+
 
     def check_winner(self):
         # BUG: Відсутні діагоналі
