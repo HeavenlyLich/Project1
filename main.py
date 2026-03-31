@@ -26,11 +26,7 @@ class TicTacToeBuggy(TicTacToeBase):
         # Fix: Додали Label з індикацією ходу
         tk.Label(self.window, textvariable=self.label_text, font=('Arial', 12)).grid(row=3, column=0, columnspan=3)
         for i in range(9):
-            if i == 4:  # BUG: Крива червона кнопка
-                btn = tk.Button(self.window, text=" ", font=('Arial', 10), width=2, height=1,
-                                command=lambda i=i: self.make_move(i), bg="red")
-            else:
-                btn = tk.Button(self.window, text=" ", font=('Arial', 20), width=5, height=2,
+            btn = tk.Button(self.window, text=" ", font=('Arial', 20), width=5, height=2,
                                 command=lambda i=i: self.make_move(i))
             btn.grid(row=i // 3, column=i % 3)
             self.buttons.append(btn)
