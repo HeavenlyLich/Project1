@@ -20,10 +20,8 @@ class TicTacToeBuggy(TicTacToeBase):
         super().__init__("Хрестики-нулики (BUGGY)")
         self.label_text = tk.StringVar(value="Зараз ходить: X")
         self.create_widgets()
-        # BUG: Мале вікно \\ Виправлено
 
     def create_widgets(self):
-        # Fix: Додали Label з індикацією ходу
         tk.Label(self.window, textvariable=self.label_text, font=('Arial', 12)).grid(row=3, column=0, columnspan=3)
         for i in range(9):
             btn = tk.Button(self.window, text=" ", font=('Arial', 20), width=5, height=2,
@@ -32,7 +30,7 @@ class TicTacToeBuggy(TicTacToeBase):
             self.buttons.append(btn)
 
     def make_move(self, i):
-        if self.board[i] == " ":  # BUG: Дозволяє перезапис \\ Виправлено
+        if self.board[i] == " ":
             self.board[i] = self.current_player
             self.buttons[i].config(text=self.current_player)
             if self.check_winner():
@@ -40,15 +38,14 @@ class TicTacToeBuggy(TicTacToeBase):
                 self.window.destroy()
             elif " " not in self.board:
                 messagebox.showinfo("Нічия", "Гра завершена нічиєю!")
-                self.window.destroy() # Додаємо скидання
+                self.window.destroy()
             else:
                 self.current_player = "O" if self.current_player == "X" else "X"
                 self.label_text.set(f"Зараз ходить: {self.current_player}")
 
 
     def check_winner(self):
-        # BUG: Відсутні діагоналі
-        win_coords = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]            # ВИПРАВЛЕНО: Діагоналі
+        win_coords = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6)]
         for combo in win_coords:
             if self.board[combo[0]] == self.board[combo[1]] == self.board[combo[2]] != " ":
                 return True
