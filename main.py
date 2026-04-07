@@ -42,6 +42,8 @@ class TicTacToeBuggy(TicTacToeBase):
             else:
                 self.current_player = "O" if self.current_player == "X" else "X"
                 self.label_text.set(f"Зараз ходить: {self.current_player}")
+        else:
+            raise ValueError("Клітинка вже зайнята!")
 
 
     def check_winner(self):
